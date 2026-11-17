@@ -1,0 +1,1020 @@
+<style>
+ #nl-badge-frame {
+  display: none !important;
+ }
+</style><style>
+ #nl-badge-frame {
+  display: none !important;
+ }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080808">
+<title>Shaban Wash | Premium Car Care</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+ --gold:#d6b36a;
+ --gold2:#f5d998;
+ --silver:#c7cbd1;
+ --dark:#080808;
+ --panel:#151515;
+ --muted:#aaa;
+ --white:#f8f8f8;
+}
+html{scroll-behavior:smooth}
+body{
+ font-family:Montserrat,sans-serif;
+ background:var(--dark);
+ color:var(--white);
+ overflow-x:hidden
+}
+button,input,textarea{font-family:inherit}
+button{cursor:pointer}
+
+/* INTRO LOADING */
+#intro{
+ position:fixed;
+ inset:0;
+ z-index:10000;
+ background:radial-gradient(circle at center,#252525,#050505 70%);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ transition:opacity .8s,visibility .8s;
+}
+#intro.hide{opacity:0;visibility:hidden}
+.intro-content{width:min(390px,85%);text-align:center}
+.intro-logo{
+ font-size:36px;
+ font-weight:900;
+ letter-spacing:5px;
+ color:white;
+}
+.intro-logo span{color:var(--gold)}
+.intro-sub{
+ color:#aaa;
+ font-size:10px;
+ letter-spacing:4px;
+ margin-top:12px;
+}
+.loading-track{
+ height:3px;
+ background:#343434;
+ margin-top:35px;
+ overflow:hidden;
+ border-radius:20px;
+}
+.loading-progress{
+ width:0;
+ height:100%;
+ background:linear-gradient(90deg,#a88742,#ffe3a0);
+ box-shadow:0 0 15px #d6b36a;
+ animation:loading 2.4s ease forwards;
+}
+@keyframes loading{to{width:100%}}
+.loading-text{
+ color:#aaa;
+ font-size:9px;
+ letter-spacing:3px;
+ margin-top:13px;
+}
+
+/* TYRE TRANSITION */
+#tyreTransition{
+ position:fixed;
+ inset:0;
+ z-index:9998;
+ background:#080808;
+ display:flex;
+ align-items:center;
+ justify-content:flex-start;
+ overflow:hidden;
+ visibility:hidden;
+ opacity:0;
+}
+#tyreTransition.run{
+ visibility:visible;
+ opacity:1;
+}
+.tyre{
+ width:125px;
+ height:125px;
+ position:absolute;
+ left:-160px;
+ top:50%;
+ transform:translateY(-50%);
+ border-radius:50%;
+ background:
+ radial-gradient(circle,#090909 0 17%,#b5b5b5 18% 21%,#252525 22% 31%,#a7a7a7 32% 35%,#161616 36% 43%,#050505 44% 70%,#777 71% 74%,#101010 75%);
+ border:9px solid #252525;
+ box-shadow:0 0 25px #d6b36a44,0 10px 35px #000;
+ animation:tyreMove 2.2s cubic-bezier(.4,0,.2,1) forwards;
+}
+.tyre:before{
+ content:"";
+ position:absolute;
+ inset:17px;
+ border:5px dashed #aaa;
+ border-radius:50%;
+ animation:spin .4s linear infinite;
+}
+.tyre:after{
+ content:"";
+ position:absolute;
+ width:27px;
+ height:27px;
+ background:radial-gradient(circle,#ddd,#555 60%,#111);
+ border-radius:50%;
+ top:50%;
+ left:50%;
+ transform:translate(-50%,-50%);
+ border:4px solid #888;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes tyreMove{
+ 0%{left:-160px;transform:translateY(-50%) rotate(0deg)}
+ 100%{left:calc(100% + 160px);transform:translateY(-50%) rotate(1100deg)}
+}
+.dust-cloud{
+ position:absolute;
+ left:0;
+ top:50%;
+ width:240px;
+ height:150px;
+ transform:translateY(-50%);
+ background:
+ radial-gradient(ellipse,#a68a5a66,transparent 65%),
+ radial-gradient(ellipse at 20% 60%,#8888,transparent 55%);
+ filter:blur(12px);
+ opacity:0;
+ animation:dustMove 2.2s ease forwards;
+}
+@keyframes dustMove{
+ 0%{opacity:0;transform:translate(-100px,-50%) scale(.4)}
+ 30%{opacity:1}
+ 100%{opacity:0;transform:translate(500px,-50%) scale(2)}
+}
+
+/* WEBSITE REVEAL */
+#website{opacity:0;transition:opacity 1s}
+#website.show{opacity:1}
+
+/* HEADER */
+header{
+ position:sticky;
+ top:0;
+ z-index:1000;
+ background:#090909ed;
+ backdrop-filter:blur(18px);
+ border-bottom:1px solid #d6b36a44;
+}
+.nav{
+ max-width:1250px;
+ margin:auto;
+ padding:17px 5%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:15px
+}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{
+ width:43px;height:43px;
+ border-radius:12px;
+ background:linear-gradient(135deg,#e5c47c,#8d6d35);
+ display:grid;place-items:center;
+ color:#090909;
+ font-size:23px;font-weight:900;
+}
+.logo h2{font-size:19px;font-weight:900;letter-spacing:1px}
+.logo h2 span{color:var(--gold)}
+.logo small{
+ display:block;color:#aaa;
+ font-size:8px;letter-spacing:3px
+}
+.navlinks{display:flex;gap:24px;align-items:center}
+.navlinks a{
+ color:#ddd;text-decoration:none;font-size:12px;
+ transition:.3s
+}
+.navlinks a:hover{color:var(--gold)}
+.cart-btn{
+ border:1px solid #d6b36a88;
+ background:#191919;color:white;
+ padding:11px 16px;border-radius:10px;font-weight:700
+}
+#cartCount{
+ background:var(--gold);color:#111;
+ padding:3px 7px;border-radius:20px;margin-left:5px
+}
+.menu{display:none}
+
+/* SALE STRIP */
+.ticker{
+ overflow:hidden;
+ background:linear-gradient(90deg,#8e6b2e,#e5c47c,#8e6b2e);
+ white-space:nowrap;padding:12px 0
+}
+.ticker-track{
+ display:flex;width:max-content;
+ animation:ticker 23s linear infinite
+}
+.ticker span{
+ font-weight:900;font-size:13px;letter-spacing:2px;
+ padding:0 27px;color:#080808
+}
+@keyframes ticker{to{transform:translateX(-50%)}}
+
+/* HERO */
+.hero{
+ min-height:600px;
+ position:relative;
+ display:flex;
+ align-items:center;
+ overflow:hidden;
+ background:
+ linear-gradient(90deg,#050505 4%,#080808df 43%,#08080855),
+ url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=2000&q=90')
+ center/cover
+}
+.hero:after{
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(0deg,#080808,transparent 35%);
+ pointer-events:none
+}
+.hero-content{
+ position:relative;z-index:2;
+ max-width:1250px;width:100%;
+ margin:auto;padding:70px 6%
+}
+.tag{
+ display:inline-block;color:var(--gold2);
+ border:1px solid #d6b36a77;
+ padding:9px 15px;border-radius:30px;
+ font-size:10px;letter-spacing:2px;margin-bottom:24px
+}
+.hero h1{
+ font-size:clamp(43px,7vw,85px);
+ line-height:1.05;font-weight:900;max-width:700px
+}
+.hero h1 span{
+ background:linear-gradient(90deg,#c6a45f,#f7e2ad);
+ -webkit-background-clip:text;
+ color:transparent
+}
+.hero p{
+ color:#c2c2c2;max-width:480px;
+ line-height:1.9;margin:24px 0;font-size:14px
+}
+.primary-btn{
+ display:inline-block;
+ background:linear-gradient(120deg,#e5c47c,#a47d37);
+ border:0;padding:15px 24px;border-radius:9px;
+ color:#080808;font-weight:900;text-decoration:none;
+ box-shadow:0 8px 30px #d6b36a33;transition:.3s
+}
+.primary-btn:hover{transform:translateY(-4px)}
+.hero-stats{display:flex;gap:35px;margin-top:40px}
+.hero-stats strong{display:block;font-size:22px;color:var(--gold2)}
+.hero-stats small{font-size:10px;color:#aaa}
+
+/* WASH EXPERIENCE */
+.wave-section{
+ padding:65px 5%;
+ background:linear-gradient(135deg,#111,#191919);
+ overflow:hidden
+}
+.section-head{text-align:center;margin-bottom:35px}
+.section-head small{
+ color:var(--gold);letter-spacing:3px;
+ font-size:10px;font-weight:800
+}
+.section-head h2{
+ font-size:clamp(27px,4vw,42px);
+ margin-top:12px;font-weight:900
+}
+.section-head h2 span{color:var(--gold2)}
+
+.wash-stage{
+ max-width:1050px;
+ margin:auto;
+ position:relative;
+ height:360px;
+ border-radius:22px;
+ overflow:hidden;
+ background:#202020;
+ border:1px solid #d6b36a66;
+ isolation:isolate;
+}
+
+/* CAR */
+.wash-car{
+ position:absolute;
+ inset:0;
+ background:url('https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1600&q=90') center 58%/cover;
+ filter:brightness(.58) saturate(.75) contrast(1.2);
+ transition:filter 2.2s ease
+}
+
+/* MUD COVER */
+.dirt-layer{
+ position:absolute;
+ inset:0;
+ opacity:1;
+ background:
+ radial-gradient(ellipse at 15% 40%,#51341feF 0%,#51341fbb 12%,transparent 27%),
+ radial-gradient(ellipse at 65% 22%,#704a28ee 0%,#704a28bb 15%,transparent 31%),
+ radial-gradient(ellipse at 45% 75%,#392417f2 0%,#392417bb 18%,transparent 37%),
+ radial-gradient(ellipse at 88% 70%,#76502dcc 0%,transparent 28%),
+ linear-gradient(145deg,#65442688,#332214bb,#76502d88);
+ mix-blend-mode:multiply;
+ transition:opacity 2.1s ease;
+ pointer-events:none
+}
+
+/* VISIBLE DUST SPOTS */
+.dirt-speckles{
+ position:absolute;
+ inset:0;
+ opacity:1;
+ background-image:
+ radial-gradient(circle,#352113 0 3px,transparent 4px),
+ radial-gradient(circle,#7b5534 0 4px,transparent 5px),
+ radial-gradient(circle,#3b281a 0 2px,transparent 4px),
+ radial-gradient(circle,#a17a4d 0 3px,transparent 5px),
+ radial-gradient(circle,#49301c 0 5px,transparent 7px);
+ background-size:37px 33px,61px 53px,49px 47px,83px 71px,105px 91px;
+ background-position:0 0,17px 23px,31px 9px,5px 45px,65px 16px;
+ opacity:1;
+ mix-blend-mode:multiply;
+ transition:opacity 1.8s ease;
+ pointer-events:none
+}
+
+/* MUD SPLASHES */
+.mud-streaks{
+ position:absolute;
+ inset:0;
+ opacity:1;
+ background:
+ linear-gradient(160deg,transparent 18%,#50341cbb 19%,#50341cbb 22%,transparent 23%),
+ linear-gradient(175deg,transparent 42%,#382416dd 43%,#382416dd 47%,transparent 48%),
+ linear-gradient(150deg,transparent 70%,#805832bb 71%,#805832bb 74%,transparent 75%),
+ radial-gradient(ellipse at 28% 55%,#54351dcc 0%,transparent 16%),
+ radial-gradient(ellipse at 80% 45%,#54351dcc 0%,transparent 18%);
+ mix-blend-mode:multiply;
+ transition:opacity 2s ease;
+ pointer-events:none
+}
+
+/* CLEAN */
+.wash-stage.clean .dirt-layer,
+.wash-stage.clean .dirt-speckles,
+.wash-stage.clean .mud-streaks{opacity:0}
+.wash-stage.clean .wash-car{
+ filter:brightness(1.12) saturate(1.25) contrast(1.08)
+}
+
+/* WATER */
+.water-wave{
+ position:absolute;
+ top:-140%;left:-35%;
+ width:170%;height:150%;
+ border-radius:45%;
+ background:linear-gradient(
+  180deg,transparent 0%,
+  #d6b36a77 25%,
+  #ffffffee 45%,
+  #c7cbd1dd 60%,
+  #d6b36a88 75%,transparent 100%
+ );
+ transform:rotate(-18deg);
+ opacity:0;pointer-events:none;z-index:5
+}
+.wash-stage.clean .water-wave{animation:wave 2.4s ease-in-out}
+@keyframes wave{
+ 0%{top:-140%;opacity:0}
+ 15%{opacity:1}
+ 75%{opacity:.9}
+ 100%{top:130%;opacity:0}
+}
+.wash-label{
+ position:absolute;bottom:22px;left:25px;
+ background:#050505dd;padding:13px 18px;
+ border:1px solid #d6b36a66;
+ border-radius:10px;font-weight:800;
+ letter-spacing:2px;font-size:12px;z-index:8
+}
+.wash-label span{color:var(--gold2)}
+.wash-controls{text-align:center;margin-top:22px}
+.wash-controls button{
+ background:linear-gradient(120deg,#e5c47c,#a47d37);
+ border:0;color:#080808;padding:14px 25px;
+ border-radius:8px;font-weight:900;letter-spacing:1px;
+ box-shadow:0 8px 25px #d6b36a44;transition:.3s
+}
+.wash-controls button:hover{transform:translateY(-3px);filter:brightness(1.12)}
+
+/* PRODUCTS */
+.products{padding:75px 5%;max-width:1350px;margin:auto}
+.product-tools{
+ display:flex;justify-content:space-between;
+ align-items:center;gap:15px;flex-wrap:wrap;
+ margin:35px 0 25px
+}
+.search{
+ background:#151515;border:1px solid #555;
+ color:white;padding:13px 16px;border-radius:9px;
+ width:min(100%,280px);outline:none
+}
+.search:focus{border-color:var(--gold)}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filter{
+ background:#171717;border:1px solid #444;
+ color:#ddd;padding:10px 13px;border-radius:7px;font-size:11px
+}
+.filter.active{
+ background:linear-gradient(120deg,#e5c47c,#a47d37);
+ color:#080808;border-color:var(--gold)
+}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:19px}
+.product{
+ background:linear-gradient(145deg,#202020,#101010);
+ border:1px solid #ffffff16;border-radius:15px;
+ overflow:hidden;position:relative;transition:.35s
+}
+.product:hover{
+ transform:translateY(-9px);
+ border-color:#d6b36a99;
+ box-shadow:0 15px 35px #0008
+}
+.product-visual{
+ height:190px;display:flex;align-items:center;
+ justify-content:center;position:relative;overflow:hidden;
+ background:radial-gradient(circle at 50% 55%,#393939,#111 70%)
+}
+.product-visual:before{
+ content:"";position:absolute;width:145px;height:145px;
+ border:1px solid #d6b36a44;border-radius:50%
+}
+.product-visual img{
+ width:100%;height:100%;object-fit:contain;
+ padding:12px;position:relative;z-index:1;transition:transform .5s
+}
+.product:hover .product-visual img{transform:scale(1.09)}
+.image-fallback{
+ position:relative;z-index:1;text-align:center;
+ color:white;font-size:12px;font-weight:900;line-height:1.7;padding:20px
+}
+.bottle{
+ position:relative;width:76px;height:112px;
+ border-radius:12px 12px 16px 16px;
+ background:linear-gradient(90deg,#111,#444 30%,#161b22 70%,#080a0d);
+ box-shadow:8px 13px 25px #0009;
+ border:1px solid #ffffff33;
+ display:flex;align-items:center;justify-content:center
+}
+.bottle:before{
+ content:"";position:absolute;top:-15px;width:32px;height:18px;
+ background:#161b22;border-radius:5px 5px 0 0;border:1px solid #ffffff30
+}
+.bottle:after{
+ content:"";position:absolute;top:-23px;width:39px;height:8px;
+ background:#222;border-radius:4px
+}
+.bottle-label{
+ width:100%;padding:13px 3px;text-align:center;
+ background:linear-gradient(135deg,#d6b36a,#80602e);
+ font-size:8px;font-weight:900;line-height:1.5;color:#111
+}
+.bottle-label small{display:block;font-size:6px;color:#292010}
+.discount{
+ position:absolute;top:12px;left:12px;z-index:2;
+ background:#d6b36a;color:#090909;
+ padding:7px 9px;border-radius:5px;
+ font-size:10px;font-weight:900;animation:pulse 1.7s infinite
+}
+@keyframes pulse{50%{box-shadow:0 0 16px #d6b36a99}}
+.product-info{padding:17px}
+.brand{color:var(--gold);font-size:9px;font-weight:800;letter-spacing:2px}
+.product-info h3{font-size:13px;margin:8px 0;min-height:32px;line-height:1.5}
+.prices{display:flex;gap:9px;align-items:center;margin:12px 0}
+.old{color:#888;text-decoration:line-through;font-size:11px}
+.new{color:var(--gold2);font-size:19px;font-weight:900}
+.add-btn{
+ width:100%;padding:12px;border:0;border-radius:8px;
+ background:linear-gradient(90deg,#e5c47c,#a47d37);
+ color:#080808;font-size:11px;font-weight:900;transition:.2s
+}
+.add-btn:hover{filter:brightness(1.2);transform:scale(1.02)}
+.no-results{grid-column:1/-1;text-align:center;padding:40px;color:var(--muted)}
+
+/* FEATURES */
+.features{padding:65px 5%;background:#111}
+.feature-grid{
+ max-width:1100px;margin:auto;
+ display:grid;grid-template-columns:repeat(3,1fr);gap:20px
+}
+.feature{
+ padding:27px;border:1px solid #d6b36a33;
+ border-radius:14px;background:#1b1b1b;transition:.3s
+}
+.feature:hover{transform:translateY(-6px);border-color:var(--gold)}
+.feature .emoji{font-size:29px}
+.feature h3{font-size:14px;margin:14px 0 8px}
+.feature p{font-size:11px;color:var(--muted);line-height:1.8}
+
+/* CART */
+.cart-section{padding:70px 5%;max-width:1100px;margin:auto}
+.cart-box{
+ background:#151515;border:1px solid #d6b36a33;
+ border-radius:16px;padding:25px
+}
+.cart-row{
+ display:flex;justify-content:space-between;
+ align-items:center;gap:12px;padding:15px 0;
+ border-bottom:1px solid #ffffff18;font-size:12px
+}
+.qty{display:flex;align-items:center;gap:10px}
+.qty button{
+ background:#303030;color:white;border:0;
+ border-radius:5px;width:25px;height:25px
+}
+.remove{background:none;border:0;color:#ff6879;font-size:11px}
+.total{text-align:right;font-size:23px;font-weight:900;margin:22px 0}
+.total span{color:var(--gold2)}
+.checkout{
+ display:grid;grid-template-columns:1fr 1fr;
+ gap:13px;margin-top:25px
+}
+.checkout input,.checkout textarea{
+ width:100%;background:#090909;color:white;
+ border:1px solid #444;padding:14px;border-radius:8px;
+ outline:none;font-size:12px
+}
+.checkout input:focus,.checkout textarea:focus{border-color:var(--gold)}
+.checkout textarea{grid-column:1/-1;min-height:85px;resize:vertical}
+.checkout .full{grid-column:1/-1}
+.whatsapp-btn{
+ grid-column:1/-1;border:0;border-radius:9px;
+ padding:16px;background:#19bd70;color:white;
+ font-size:13px;font-weight:900
+}
+.whatsapp-btn:hover{filter:brightness(1.1)}
+.empty{text-align:center;color:var(--muted);padding:25px}
+
+/* FOOTER */
+footer{
+ background:#050505;padding:45px 5%;text-align:center;
+ border-top:1px solid #d6b36a44
+}
+footer h2{font-size:23px;font-weight:900}
+footer h2 span{color:var(--gold)}
+footer p{font-size:11px;color:var(--muted);margin-top:12px;line-height:2}
+footer .social{margin-top:18px;color:var(--gold);font-size:12px}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .7s,transform .7s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:950px){
+ .product-grid{grid-template-columns:repeat(3,1fr)}
+ .navlinks{gap:12px}
+}
+@media(max-width:650px){
+ .nav{padding:13px 4%}
+ .logo h2{font-size:15px}
+ .logo-icon{width:37px;height:37px}
+ .navlinks{display:none}
+ .menu{display:block;background:none;border:0;color:white;font-size:22px}
+ .hero{min-height:570px;background-position:60% center}
+ .hero-content{padding:55px 6%}
+ .hero h1{font-size:48px}
+ .hero-stats{gap:18px}
+ .hero-stats strong{font-size:18px}
+ .wash-stage{height:260px}
+ .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .product-visual{height:145px}
+ .product-info{padding:12px}
+ .product-info h3{font-size:11px}
+ .new{font-size:16px}
+ .feature-grid{grid-template-columns:1fr}
+ .checkout{grid-template-columns:1fr}
+ .checkout textarea,.checkout .full,.whatsapp-btn{grid-column:1}
+ .cart-box{padding:15px}
+ .tyre{width:95px;height:95px}
+}
+@media(max-width:360px){
+ .product-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOADING INTRO -->
+<div id="intro">
+ <div class="intro-content">
+  <div class="intro-logo">SHABAN <span>WASH</span></div>
+  <div class="intro-sub">PREMIUM CAR CARE EXPERIENCE</div>
+  <div class="loading-track"><div class="loading-progress"></div></div>
+  <div class="loading-text">LOADING EXPERIENCE...</div>
+ </div>
+</div>
+
+<!-- TYRE ANIMATION -->
+<div id="tyreTransition">
+ <div class="dust-cloud"></div>
+ <div class="tyre"></div>
+</div>
+
+<!-- MAIN WEBSITE -->
+<div id="website">
+
+<header>
+<nav class="nav">
+ <div class="logo">
+  <div class="logo-icon">S</div>
+  <div><h2>SHABAN <span>WASH</span></h2><small>PREMIUM CAR CARE</small></div>
+ </div>
+ <div class="navlinks">
+  <a href="#home">HOME</a>
+  <a href="#products">PRODUCTS</a>
+  <a href="#features">WHY US</a>
+  <a href="#checkout">ORDER</a>
+ </div>
+ <button class="cart-btn" onclick="document.querySelector('#checkout').scrollIntoView({behavior:'smooth'})">CART <span id="cartCount">0</span></button>
+ <button class="menu" onclick="document.querySelector('#products').scrollIntoView({behavior:'smooth'})">☰</button>
+</nav>
+</header>
+
+<div class="ticker"><div class="ticker-track">
+<span>🔥 MEGA SALE • 50% OFF EVERYTHING • SHABAN WASH • PREMIUM CAR CARE 🔥</span>
+<span>🔥 MEGA SALE • 50% OFF EVERYTHING • SHABAN WASH • PREMIUM CAR CARE 🔥</span>
+<span>🔥 MEGA SALE • 50% OFF EVERYTHING • SHABAN WASH • PREMIUM CAR CARE 🔥</span>
+<span>🔥 MEGA SALE • 50% OFF EVERYTHING • SHABAN WASH • PREMIUM CAR CARE 🔥</span>
+</div></div>
+
+<section class="hero" id="home">
+<div class="hero-content">
+ <div class="tag">✦ THE ULTIMATE CAR CARE STORE</div>
+ <h1>MAKE YOUR CAR <span>SHINE.</span></h1>
+ <p>Premium car cleaning products from trusted automotive care brands. Give your vehicle the showroom finish it deserves.</p>
+ <a href="#products" class="primary-btn">EXPLORE PRODUCTS →</a>
+ <div class="hero-stats">
+  <div><strong>30+</strong><small>CAR CARE PRODUCTS</small></div>
+  <div><strong>50%</strong><small>SALE DISCOUNT</small></div>
+  <div><strong>24/7</strong><small>ONLINE ORDERS</small></div>
+ </div>
+</div>
+</section>
+
+<section class="wave-section reveal">
+<div class="section-head">
+ <small>THE SHABAN WASH EXPERIENCE</small>
+ <h2>DIRTY TO <span>DIAMOND CLEAN</span></h2>
+</div>
+
+<div class="wash-stage" id="washStage">
+ <div class="wash-car"></div>
+ <div class="dirt-layer"></div>
+ <div class="dirt-speckles"></div>
+ <div class="mud-streaks"></div>
+ <div class="water-wave"></div>
+ <div class="wash-label" id="washLabel">BEFORE <span>→</span> WASH</div>
+</div>
+
+<div class="wash-controls">
+ <button id="washButton" onclick="washCar()">💦 EXPERIENCE THE WASH</button>
+</div>
+</section>
+
+<section class="products" id="products">
+<div class="section-head reveal">
+ <small>OUR PREMIUM COLLECTION</small>
+ <h2>SHOP CAR <span>CARE PRODUCTS</span></h2>
+ <p style="color:#aaa;font-size:11px;margin-top:12px">30 products. Every listed item has 50% OFF.</p>
+</div>
+<div class="product-tools">
+ <input class="search" id="search" placeholder="Search products or brands..." oninput="renderProducts()">
+ <div class="filters">
+  <button class="filter active" onclick="setFilter('All',this)">ALL</button>
+  <button class="filter" onclick="setFilter('Wash',this)">WASH</button>
+  <button class="filter" onclick="setFilter('Interior',this)">INTERIOR</button>
+  <button class="filter" onclick="setFilter('Polish',this)">POLISH</button>
+  <button class="filter" onclick="setFilter('Accessories',this)">ACCESSORIES</button>
+ </div>
+</div>
+<div class="product-grid" id="productGrid"></div>
+</section>
+
+<section class="features" id="features">
+<div class="section-head reveal">
+ <small>THE SHABAN PROMISE</small>
+ <h2>WHY SHOP <span>WITH US?</span></h2>
+</div>
+<div class="feature-grid">
+ <div class="feature reveal"><div class="emoji">🚘</div><h3>PREMIUM BRANDS</h3><p>Explore products from established automotive care brands.</p></div>
+ <div class="feature reveal"><div class="emoji">💎</div><h3>50% SALE</h3><p>Enjoy a promotional 50% discount on every listed product.</p></div>
+ <div class="feature reveal"><div class="emoji">📦</div><h3>WHATSAPP ORDERS</h3><p>Submit your order details directly through WhatsApp.</p></div>
+</div>
+</section>
+
+<section class="cart-section" id="checkout">
+<div class="section-head">
+ <small>YOUR SHOPPING BAG</small>
+ <h2>YOUR <span>CART</span></h2>
+</div>
+<div class="cart-box">
+ <div id="cartItems"><div class="empty">Your cart is currently empty 🛒</div></div>
+ <div class="total">TOTAL: <span id="cartTotal">Rs. 0</span></div>
+ <h3 style="font-size:15px;margin:28px 0 15px">DELIVERY INFORMATION</h3>
+ <div class="checkout">
+  <input id="customerName" placeholder="Your full name *">
+  <input id="customerPhone" type="tel" placeholder="Your phone number *">
+  <input class="full" id="customerAddress" placeholder="Complete delivery address *">
+  <input id="customerCity" placeholder="City *">
+  <input id="customerArea" placeholder="Area / Sector">
+  <textarea id="customerNote" placeholder="Additional instructions (optional)"></textarea>
+  <button class="whatsapp-btn" onclick="confirmOrder()">✆ CONFIRM ORDER ON WHATSAPP</button>
+ </div>
+ <p style="font-size:10px;color:#aaa;margin-top:15px;line-height:1.8">Your order details will be prepared in WhatsApp. Review and press Send to submit.</p>
+</div>
+</section>
+
+<footer>
+<h2>SHABAN <span>WASH</span></h2>
+<p>PREMIUM CAR CARE EXPERIENCE<br>KEEP YOUR CAR CLEAN. KEEP IT SHINING.</p>
+<div class="social">50% OFF • PREMIUM COLLECTION • WHATSAPP ORDERS</div>
+<p>© 2026 Shaban Wash. All rights reserved.</p>
+</footer>
+
+</div>
+
+<script>
+/* PRODUCT DATA */
+const products=[
+["Turtle Wax","Hybrid Solutions Ceramic Wash","Wash",4200,"https://turtlewax.com/cdn/shop/files/53411_Hybrid_Solutions_Ceramic_Wash_Wax_64oz_Front.png"],
+["Turtle Wax","Carnauba Car Wax","Polish",3500,""],
+["Turtle Wax","Bug & Tar Remover","Wash",2800,""],
+["Turtle Wax","Glass Cleaner","Interior",1800,""],
+["Meguiar's","Gold Class Car Wash","Wash",5200,"https://meguiars.com.pk/cdn/shop/files/G7164.webp?v=1787410832&width=900"],
+["Meguiar's","Ultimate Liquid Wax","Polish",6800,""],
+["Meguiar's","Ultimate Interior Detailer","Interior",4500,""],
+["Meguiar's","Hot Rims Wheel Cleaner","Accessories",3800,""],
+["SONAX","Gloss Shampoo","Wash",3900,""],
+["SONAX","Xtreme Ceramic Spray","Polish",6200,""],
+["SONAX","Cockpit Cleaner","Interior",3100,""],
+["SONAX","Wheel Cleaner Beast","Accessories",4900,""],
+["3M","Car Wash Shampoo","Wash",2600,""],
+["3M","Premium Wax Polish","Polish",3400,""],
+["3M","Interior Cleaner","Interior",2200,""],
+["3M","Glass Cleaner","Interior",1900,""],
+["Mothers","California Gold Shampoo","Wash",4300,""],
+["Mothers","Carnauba Cleaner Wax","Polish",4700,""],
+["Mothers","Leather Cleaner","Interior",3900,""],
+["Mothers","Chrome Polish","Accessories",3600,""],
+["Armor All","Protectant Original","Interior",2700,""],
+["Armor All","Tire Foam","Accessories",2400,""],
+["Armor All","Glass Cleaner","Interior",2100,""],
+["Armor All","Car Wash Concentrate","Wash",2500,""],
+["Formula 1","Carnauba Wax","Polish",3200,""],
+["Formula 1","Scratch Out","Polish",2900,""],
+["Liqui Moly","Auto Shampoo","Wash",3700,""],
+["Liqui Moly","Cockpit Care","Interior",3400,""],
+["Koch Chemie","Green Star Cleaner","Interior",5500,""],
+["Koch Chemie","Gentle Snow Foam","Wash",5900,""]
+];
+
+let cart=[];
+let currentFilter="All";
+const money=n=>"Rs. "+n.toLocaleString("en-PK");
+
+function renderProducts(){
+ const grid=document.getElementById("productGrid");
+ const q=document.getElementById("search").value.toLowerCase();
+
+ const filtered=products.map((p,i)=>({
+ brand:p[0],name:p[1],cat:p[2],price:p[3],image:p[4],id:i
+ })).filter(p=>(currentFilter==="All"||p.cat===currentFilter)&&
+ (p.brand+" "+p.name).toLowerCase().includes(q));
+
+ grid.innerHTML="";
+
+ if(!filtered.length){
+ grid.innerHTML='<div class="no-results">No products found.</div>';
+ return;
+ }
+
+ filtered.forEach(p=>{
+ const discounted=Math.round(p.price/2);
+ const card=document.createElement("article");
+ card.className="product reveal";
+
+ const visual=p.image?
+ `<img src="${p.image}" alt="${p.brand} ${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+ <div class="image-fallback" style="display:none">${p.brand}<br>${p.name}</div>`:
+ `<div class="image-fallback">${p.brand}<br>${p.name}</div>`;
+
+ card.innerHTML=`
+ <div class="product-visual">
+  <div class="discount">50% OFF</div>
+  ${visual}
+ </div>
+ <div class="product-info">
+  <div class="brand">${p.brand.toUpperCase()}</div>
+  <h3>${p.name}</h3>
+  <div class="prices">
+   <span class="old">${money(p.price)}</span>
+   <span class="new">${money(discounted)}</span>
+  </div>
+  <button class="add-btn" onclick="addToCart(${p.id})">＋ ADD TO CART</button>
+ </div>`;
+ grid.appendChild(card);
+ });
+ observeReveals();
+}
+
+function setFilter(category,btn){
+ currentFilter=category;
+ document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
+ btn.classList.add("active");
+ renderProducts();
+}
+
+function addToCart(id){
+ let found=cart.find(p=>p.id===id);
+ if(found)found.qty++;
+ else cart.push({id,qty:1});
+ updateCart();
+}
+
+function changeQty(id,amount){
+ let item=cart.find(p=>p.id===id);
+ if(!item)return;
+ item.qty+=amount;
+ if(item.qty<=0)cart=cart.filter(p=>p.id!==id);
+ updateCart();
+}
+
+function updateCart(){
+ let box=document.getElementById("cartItems");
+ let count=cart.reduce((s,p)=>s+p.qty,0);
+ document.getElementById("cartCount").textContent=count;
+
+ if(!cart.length){
+ box.innerHTML='<div class="empty">Your cart is currently empty 🛒</div>';
+ document.getElementById("cartTotal").textContent=money(0);
+ return;
+ }
+
+ let total=0;
+ box.innerHTML="";
+
+ cart.forEach(item=>{
+ let p=products[item.id];
+ let price=Math.round(p[3]/2);
+ total+=price*item.qty;
+
+ let row=document.createElement("div");
+ row.className="cart-row";
+ row.innerHTML=`
+ <div style="flex:1"><b>${p[1]}</b><br><small style="color:#aaa">${p[0]} • ${money(price)} each</small></div>
+ <div class="qty">
+ <button onclick="changeQty(${item.id},-1)">−</button>
+ <b>${item.qty}</b>
+ <button onclick="changeQty(${item.id},1)">+</button>
+ </div>
+ <button class="remove" onclick="changeQty(${item.id},-${item.qty})">REMOVE</button>`;
+ box.appendChild(row);
+ });
+
+ document.getElementById("cartTotal").textContent=money(total);
+}
+
+/* WHATSAPP ORDER */
+function confirmOrder(){
+ if(!cart.length){
+ alert("Please add products to your cart first.");
+ return;
+ }
+
+ const name=document.getElementById("customerName").value.trim();
+ const phone=document.getElementById("customerPhone").value.trim();
+ const address=document.getElementById("customerAddress").value.trim();
+ const city=document.getElementById("customerCity").value.trim();
+ const area=document.getElementById("customerArea").value.trim();
+ const note=document.getElementById("customerNote").value.trim();
+
+ if(!name||!phone||!address||!city){
+ alert("Please fill in your name, phone, full address and city.");
+ return;
+ }
+
+ let total=0;
+ let lines=cart.map(item=>{
+ const p=products[item.id];
+ const price=Math.round(p[3]/2);
+ total+=price*item.qty;
+ return `${p[0]} - ${p[1]}\nQty: ${item.qty} x ${money(price)} = ${money(price*item.qty)}`;
+ });
+
+ const message=
+ `🧽 *NEW ORDER - SHABAN WASH*\n\n`+
+ `👤 Customer: ${name}\n`+
+ `📱 Phone: ${phone}\n`+
+ `📍 Address: ${address}\n`+
+ `🏙️ City: ${city}\n`+
+ `📌 Area: ${area||"Not provided"}\n\n`+
+ `🛒 *ORDER DETAILS*\n${lines.join("\n\n")}\n\n`+
+ `💰 *TOTAL: ${money(total)}*\n`+
+ `🎉 Discount: 50% OFF\n\n`+
+ `📝 Note: ${note||"None"}\n\nPlease confirm my order.`;
+
+ const whatsappNumber="923199470903";
+ const url="https://wa.me/"+whatsappNumber+"?text="+encodeURIComponent(message);
+ window.location.href=url;
+}
+
+/* DIRTY TO CLEAN */
+let isClean=false;
+let isWashing=false;
+
+function washCar(){
+ const stage=document.getElementById("washStage");
+ const button=document.getElementById("washButton");
+ const label=document.getElementById("washLabel");
+
+ if(isWashing)return;
+
+ if(isClean){
+  stage.classList.remove("clean");
+  isClean=false;
+  label.innerHTML='BEFORE <span>→</span> WASH';
+  button.textContent="💦 EXPERIENCE THE WASH";
+  return;
+ }
+
+ isWashing=true;
+ stage.classList.remove("clean");
+ void stage.offsetWidth;
+ stage.classList.add("clean");
+
+ label.innerHTML='AFTER <span>✓</span> CLEAN';
+ button.textContent="↻ WASH AGAIN";
+
+ setTimeout(()=>{
+  isClean=true;
+  isWashing=false;
+ },2500);
+}
+
+/* INTRO + TYRE + WEBSITE SEQUENCE */
+window.addEventListener("load",()=>{
+ setTimeout(()=>{
+  document.getElementById("intro").classList.add("hide");
+
+  const tyre=document.getElementById("tyreTransition");
+  tyre.classList.add("run");
+
+  setTimeout(()=>{
+   document.getElementById("website").classList.add("show");
+  },1500);
+
+  setTimeout(()=>{
+   tyre.style.opacity="0";
+   tyre.style.visibility="hidden";
+  },2300);
+
+ },2500);
+});
+
+/* SCROLL REVEALS */
+let observer;
+function observeReveals(){
+ if(!("IntersectionObserver" in window)){
+ document.querySelectorAll(".reveal").forEach(el=>el.classList.add("visible"));
+ return;
+ }
+ if(observer)observer.disconnect();
+ observer=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+ if(entry.isIntersecting){
+ entry.target.classList.add("visible");
+ observer.unobserve(entry.target);
+ }
+ });
+ },{threshold:.08});
+ document.querySelectorAll(".reveal:not(.visible)").forEach(el=>observer.observe(el));
+}
+
+renderProducts();
+updateCart();
+observeReveals();
+</script>
+</body>
+</html>
+
